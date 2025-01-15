@@ -8,9 +8,17 @@ import imageRouter from './routes/imageRoutes.js';
 const PORT = process.env.PORT || 4000;
 const app = express();
 
+const corsOptions = {
+    origin: 'https://aeonia.netlify.app/',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+
+
 //Middlewares
 app.use(express.json())
-app.use(cors());
+app.use(cors(corsOptions));
 app.use('/api/user', userRouter);
 app.use('/api/image', imageRouter);
 
